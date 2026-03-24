@@ -1,11 +1,11 @@
 name: Manual Workflow
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-   steps:
+    steps:
       - name: Print variable
-      run: echo "Environment is ${{ vars.NAME }}"
+        run: echo "Environment is ${{ vars.NAME }}"
