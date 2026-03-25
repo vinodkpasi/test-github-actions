@@ -3,9 +3,13 @@ name: Manual Workflow
 on:
   workflow_dispatch:
 
+env:
+  APP_NAME: MyApp
+  ENVIRONMENT: dev
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Print variable
-        run: echo "Environment is ${{ vars.NAME }}"
+        run: echo "Environment is {{ $APP_NAME }}"
