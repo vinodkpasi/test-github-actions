@@ -5,13 +5,16 @@ on:
 
 env:
   TITLE: 'Mr.'
+
 jobs:
   build:
-   env:
-       FNAME: 'Vinod'
     runs-on: ubuntu-latest
+
+    env:
+      FNAME: 'Vinod'
+
     steps:
       - name: Print variables
-    env:
-       LNAME: 'Kumar'
+        env:
+          LNAME: 'Kumar'
         run: echo "$TITLE $FNAME $LNAME"
