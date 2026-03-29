@@ -7,19 +7,12 @@ env:
   TITLE: 'Mr.'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    env:
-      FNAME: 'Vinod'
-
-    steps:
-      - name: Print variables
-        env:
-          LNAME: 'Kumar'
-        run: echo "$TITLE $FNAME $LNAME"
-  build2:
+  demo:
     runs-on: ubuntu-latest
     steps:
-      - name: Print variables
-        run: echo "$TITLE $FNAME $LNAME"
+      - name: Generate version
+        id: version_step
+        run: echo "version=2.0.0" >> $GITHUB_OUTPUT
+
+      - name: Use version output
+        run: echo "Version is ${{ steps.version_step.outputs.version }}"
