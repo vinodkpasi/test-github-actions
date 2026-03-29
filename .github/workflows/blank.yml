@@ -18,3 +18,8 @@ jobs:
         env:
           LNAME: 'Kumar'
         run: echo "$TITLE $FNAME $LNAME"
+  build2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print variables
+        run: echo "$TITLE $FNAME $LNAME"
