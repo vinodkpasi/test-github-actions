@@ -9,12 +9,11 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      app_version: ${{ steps.version.outputs.version }}
-
     steps:
       - id: version
         run: echo "version=3.0.0" >> $GITHUB_OUTPUT
+    outputs:
+      app_version: ${{ steps.version.outputs.version }}
 
   deploy:
     runs-on: ubuntu-latest
