@@ -4,12 +4,14 @@ on:
   workflow_dispatch:
 
 env:
-  APP_NAME: MyApp
-  ENVIRONMENT: dev
-  
+  TITLE: 'Mr.'
 jobs:
   build:
+   env:
+       FNAME: 'Vinod'
     runs-on: ubuntu-latest
     steps:
-      - name: Print variable
-        run: echo "Environment is {{ $APP_NAME }}"
+      - name: Print variables
+    env:
+       LNAME: 'Kumar'
+        run: echo "$TITLE $FNAME $LNAME"
