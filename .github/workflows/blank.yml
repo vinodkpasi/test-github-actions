@@ -5,10 +5,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     steps:
-      - name: Set variable
-        run: echo "MY_VAR=HelloVinod" >> $GITHUB_ENV
-
-      - name: Use variable
-        run: echo "Value is $MY_VAR"
+      - name: Install
+        run: exit 0
+   lint:
+    steps:
+      - name: Lint
+        run: exit 0
+   test:
+    steps:
+      - name: Test
+        run: exit 1
