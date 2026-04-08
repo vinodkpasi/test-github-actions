@@ -5,14 +5,20 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
       - name: Install
         run: exit 0
-   lint:
+
+  lint:
+    runs-on: ubuntu-latest
     steps:
       - name: Lint
         run: exit 0
-   test:
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [build, lint]
     steps:
       - name: Test
         run: exit 1
