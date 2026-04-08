@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Lint
         run: exit 0
-   run:
+   test:
     steps:
       - name: Test
         run: exit 1
