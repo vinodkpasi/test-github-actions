@@ -10,4 +10,8 @@ jobs:
         run: echo "APP_VERSION=1.2.3" >> $GITHUB_ENV
 
       - name: Use environment variable
-        run: echo "Version is $APP_VERSION"
+        run: |
+          echo "Version is $APP_VERSION"
+          echo "Version is {{$APP_VERSION}}"
+
+        
