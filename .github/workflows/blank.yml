@@ -1,17 +1,23 @@
-name: GITHUB_ENV Demo
+name: GITHUB_ENV Expression Demo
 
 on: push
 
 jobs:
   demo:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set environment variable
-        run: echo "APP_VERSION=1.2.3" >> $GITHUB_ENV
-
-      - name: Use environment variable
         run: |
-          echo "Version is $APP_VERSION"
-          echo "Version is ${{APP_VERSION}}"
+          echo "APP_VERSION=1.2.3" >> $GITHUB_ENV
+          echo "ENVIRONMENT=QA" >> $GITHUB_ENV
 
-        
+      - name: Read using shell
+        run: |
+          echo "Version: $APP_VERSION"
+          echo "Environment: $ENVIRONMENT"
+
+      - name: Read using GitHub expression
+        run: |
+          echo "Version: ${{ env.APP_VERSION }}"
+          echo "Environment: ${{ env.ENVIRONMENT }}"
