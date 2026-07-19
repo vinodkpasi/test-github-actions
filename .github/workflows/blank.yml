@@ -1,16 +1,13 @@
-name: CI
+name: GITHUB_ENV Demo
 
-on: workflow_dispatch
+on: push
 
 jobs:
-  build:
+  demo:
     runs-on: ubuntu-latest
-
     steps:
-      - run: echo "Building application"
+      - name: Set environment variable
+        run: echo "APP_VERSION=1.2.3" >> $GITHUB_ENV
 
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - run: echo "Running tests"
+      - name: Use environment variable
+        run: echo "Version is $APP_VERSION"
