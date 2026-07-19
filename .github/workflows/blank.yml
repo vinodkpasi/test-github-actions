@@ -12,6 +12,6 @@ jobs:
       - name: Use environment variable
         run: |
           echo "Version is $APP_VERSION"
-          echo "Version is {{$APP_VERSION}}"
+          echo "Version is ${{APP_VERSION}}"
 
         
