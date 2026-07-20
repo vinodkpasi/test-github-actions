@@ -1,1 +1,9 @@
 
+name: Main Workflow
+
+on:
+  push:
+
+jobs:
+  call-greeting:
+    uses: ./.github/workflows/greet.yml
