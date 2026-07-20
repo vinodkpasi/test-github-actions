@@ -1,0 +1,29 @@
+name: Build Workflow
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+
+      environment:
+        required: true
+        type: string
+
+      browser:
+        required: false
+        default: chromium
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: |
+         echo "Node Version = ${{ inputs.node-version }}"
+         echo "Environment = ${{ inputs.environment }}"
+         echo "Browser = ${{ inputs.browser }}"
+
