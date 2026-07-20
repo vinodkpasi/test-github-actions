@@ -6,4 +6,8 @@ on:
 
 jobs:
   call-greeting:
-    uses: ./.github/workflows/greet.yml
+    uses: ./.github/workflows/build.yml
+    with:
+      node-version: "20"
+      environment: qa
+      browser: firefox
