@@ -1,1 +1,12 @@
+name: Greeting Workflow
 
+on:
+  workflow_call:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "Hello from the reusable workflow!"
