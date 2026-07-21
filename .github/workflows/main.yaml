@@ -1,46 +1,29 @@
-name: Playwright Tests
+name: CI Pipeline
 
-on:
-  workflow_dispatch:
-    inputs:
-      browser:
-        type: choice
-        description: Browser
-        options:
-          - chromium
-          - firefox
-          - webkit
-        default: chromium
-
-      environment:
-        type: choice
-        description: Test Environment
-        options:
-          - dev
-          - qa
-          - stage
-          - prod
-        default: qa
-
-      workers:
-        type: number
-        default: 4
-
-      headed:
-        type: boolean
-        default: false
-
-      username:
-        type: string
-        default: admin
+on: push
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Building..."
+
   test:
     runs-on: ubuntu-latest
-
+    needs: build
     steps:
-      - run: echo "Browser = ${{ inputs.browser }}"
-      - run: echo "Environment = ${{ inputs.environment }}"
-      - run: echo "Workers = ${{ inputs.workers }}"
-      - run: echo "Headed = ${{ inputs.headed }}"
-      - run: echo "Username = ${{ inputs.username }}"
+      - run: echo "Running tests..."
+
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo "Security Scan..."
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+      - security-scan
+    steps:
+      - run: echo "Deploying..."
