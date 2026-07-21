@@ -1,32 +1,16 @@
-name: Manual Deployment
+name: Custom Action Demo
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: "Select environment"
-        required: true
-        default: "dev"
-        type: choice
-        options:
-          - dev
-          - qa
-          - prod
-
-      browser:
-        description: "Browser"
-        required: true
-        default: chromium
-        type: choice
-        options:
-          - chromium
-          - firefox
-          - webkit
 
 jobs:
-  deploy:
+  demo:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Environment=${{ inputs.environment }}"
-      - run: echo "Browser=${{ inputs.browser }}"
+      - uses: actions/checkout@v4
+
+      - name: Run Greeting Action
+        uses: ./.github/actions/greet
+        with:
+          username: Vinod
