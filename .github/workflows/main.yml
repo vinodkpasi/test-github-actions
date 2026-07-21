@@ -1,13 +1,32 @@
-
-name: Main Workflow
+name: Manual Deployment
 
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+
+      browser:
+        description: "Browser"
+        required: true
+        default: chromium
+        type: choice
+        options:
+          - chromium
+          - firefox
+          - webkit
 
 jobs:
-  call-greeting:
-    uses: ./.github/workflows/build.yml
-    with:
-      node-version: "20"
-      environment: qa
-      browser: firefox
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Environment=${{ inputs.environment }}"
+      - run: echo "Browser=${{ inputs.browser }}"
