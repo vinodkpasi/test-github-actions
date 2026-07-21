@@ -3,18 +3,17 @@ name: CI Pipeline
 on: push
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  build:
+    steps:
+      - run: echo "Building..."
 
-  unit-test:
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running tests..."
 
-  integration-test:
+  security-scan:
     runs-on: ubuntu-latest
+    steps:
+      - run: echo "Security Scan..."
 
-  package:
-    needs:
-      - lint
-      - unit-test
-      - integration-test
-    runs-on: ubuntu-latest
