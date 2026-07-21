@@ -1,16 +1,46 @@
-name: Custom Action Demo
+name: Playwright Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      browser:
+        type: choice
+        description: Browser
+        options:
+          - chromium
+          - firefox
+          - webkit
+        default: chromium
+
+      environment:
+        type: choice
+        description: Test Environment
+        options:
+          - dev
+          - qa
+          - stage
+          - prod
+        default: qa
+
+      workers:
+        type: number
+        default: 4
+
+      headed:
+        type: boolean
+        default: false
+
+      username:
+        type: string
+        default: admin
 
 jobs:
-  demo:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Run Greeting Action
-        uses: ./.github/actions/greet
-        with:
-          username: Vinod
+      - run: echo "Browser = ${{ inputs.browser }}"
+      - run: echo "Environment = ${{ inputs.environment }}"
+      - run: echo "Workers = ${{ inputs.workers }}"
+      - run: echo "Headed = ${{ inputs.headed }}"
+      - run: echo "Username = ${{ inputs.username }}"
