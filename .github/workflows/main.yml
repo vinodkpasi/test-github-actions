@@ -1,22 +1,17 @@
-name: CI-CD Pipeline
+name: Deploy
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Select deployment environment"
+        type: environment
+        required: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.target }}
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/my-custom-setup
-      - run: echo "Building..."
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Running tests..."
-
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Security Scan..."
+      - run: echo "Deploying to ${{ inputs.target }}"
